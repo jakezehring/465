@@ -7,6 +7,33 @@
 <p>Fill in each step with a word that differs from the word in the previous step by no more than one character. Once you reach a word that differs from the goal by only one letter, you can stop and leave the remainder of the steps empty.
 </P>
 
+<p> Step 0: <%= @step_zero %> </P>
+<%= form_tag(results_path, method: "post") do  %>
+    
+    <%= hidden_field_tag "step_zero", @step_zero %>
+    <%= hidden_field_tag "step_last", @step_last %>
+
+    <%= label_tag(:step_one, "Step 1: ") %>
+    <%= text_field_tag(:step_one) %>
+    <br>
+    <%= label_tag(:step_two, "Step 2: ") %>
+    <%= text_field_tag(:step_two) %>
+    <br>
+    <%= label_tag(:step_three, "Step 3: ") %>
+    <%= text_field_tag(:step_three) %>
+    <br>
+    <%= label_tag(:step_four, "Step 4: ") %>
+    <%= text_field_tag(:step_four) %>
+    <br>
+    <%= label_tag(:step_five, "Step 5: ") %>
+    <%= text_field_tag(:step_five) %>
+
+    <%= submit_tag("Submit") %>
+
+<% end %>
+<p> Goal: <%= @step_last %> </p>
+
+
 </body>
 </html>
 
