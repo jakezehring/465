@@ -7,17 +7,12 @@
 <br>
 
 
-<p> <%= @step_zero %> </p>
-
-<p> 
-    <%= @step_one %>
-    <%= @step_two %>
-    <%= @step_three %>
-    <%= @step_four %>
-    <%= @step_five %> 
-</p>
-
-<p> <%= @step_last %> </p>
+<% @results.each do |cur| %>
+   Step <%= @count %>:
+   <%= cur %>
+   <br>
+   <% @count = @count + 1 %>
+   <% end %>
 
 <p> <b> <%= @message %> </b>  </p>
 <br>

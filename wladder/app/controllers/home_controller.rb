@@ -21,10 +21,13 @@ class HomeController < ApplicationController
     @correct = false
     @results = [@step_zero, @step_one, @step_two, @step_three, @step_four, @step_five, @step_last]
     @results.compact!
+    @results.map! { |cur| cur if cur != "" }
+    @results.compact!
     if legal(@results)
       @message = "Correct! you win!"
     else
       @message = "Incorrect! you LOSE!"
     end
+    @count = 0;
   end
 end
