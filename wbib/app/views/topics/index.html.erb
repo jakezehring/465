@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1> Jacob Zehring's Webliography </h1>
+
+
+<table>
+	<thead>
+	<tr>
+		<th> Title </th>
+		<th> Description <th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @topic.each do |cur| %>
+	<tr>
+		<td> <%= cur.title %> </td>
+		<td> <%= cur.description %> </td>
+		<td> <%= link_to "Show", cur %> </td>
+		<td> <%= link_to "Edit", edit_topic_path(cur) %> </td>
+		<td> <%= link_to "Delete", cur, method: :delete, data: { confirm: "Are you sure?" } %> </td>
+	</tr>
+	<% end %>
+	</tbody>		
+
+</table>
+
+<br>
+
+<%= link_to "New topic", new_topic_path %>
+</html>
+<body>

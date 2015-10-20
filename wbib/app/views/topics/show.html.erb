@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1> <%= @topic.title %> </h1>
+<h3> <%= @topic.description %> </h3>
+
+
+<table>
+	<thead>
+	<tr>
+		<th> URL </th>
+		<th> Last changed <th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @topic.references.each do |cur| %>
+	<tr>
+		<td> <%= cur.URL %> </td>
+		<td> <%= cur.updated_at %> </td>
+	</tr>
+	<% end %>
+	</tbody>		
+
+</table>
+
+<br>
+<br>
+<%= link_to "Show all topics", topics_path %>
+</html>
+<body>
