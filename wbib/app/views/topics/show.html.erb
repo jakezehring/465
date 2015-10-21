@@ -16,14 +16,20 @@
 	<tbody>
 	<% @topic.references.each do |cur| %>
 	<tr>
-		<td> <%= cur.URL %> </td>
+	<% if !cur.new_record? %>
+		<td> <a href=<%=cur.URL %>> <%= cur.URL %></td>
 		<td> <%= cur.updated_at %> </td>
+		<td> <%= link_to "Edit", edit_reference_path(cur) %> </td>
+		<td> <%= link_to "Delete", cur, method: :delete, data: {confirm: "Are you sure?" } %> </td>
 	</tr>
+	<% end %>
 	<% end %>
 	</tbody>		
 
 </table>
 
+<h3> Create New Reference </h3>
+<%= render "references/form" %>
 <br>
 <br>
 <%= link_to "Show all topics", topics_path %>

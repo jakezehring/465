@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
 	end
 
 	def show
+		@reference = @topic.references.new
 	end
 
 	def new

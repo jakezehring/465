@@ -1,22 +1,21 @@
-class TopicsController < ApplicationController
-	before_action :set_topic, only: [:show, :edit, :update, :destroy]
+class ReferencesController < ApplicationController
+	before_action :set_reference, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@topic = Topic.all
-	end
-
-	def show
+		@reference = Reference.all
 	end
 
 	def new
-		@topic = Topic.new
+		@topic = Topic.find params[:topic_id]
+		@reference = @topic.references.new
 	end
 
 	def create
-		@topic = Topic.new(params.require(:topic).permit(:title, :description))
+		@topic = Topic.find params[:topic_id]
+		@reference = @topic.references.new(params.require(:reference).permit(:URL))
 		
-		if @topic.save
-			redirect_to @topic
+		if @reference.save
+			redirect_to topic_url(@topic)
 		else
 			render :new
 		end
@@ -26,22 +25,22 @@ class TopicsController < ApplicationController
 	end
 
 	def update
-		if @topic.update(params.require(:topic).permit(:title, :description))
-			redirect_to @topic
+		if @reference.update(params.require(:reference).permit(:URL))
+			redirect_to topic_url(@reference.topic)
 		else
 			render :edit
 		end
 	end
 
 	def destroy
-		@topic.destroy
-		redirect_to topics_url
+		@reference.destroy
+		redirect_to topic_url(@reference.topic)
 	end
 
 	private
 
-	def set_topic
-		@topic = Topic.find(params[:id])
+	def set_reference
+		@reference = Reference.find(params[:id])
 	end
 
 end
