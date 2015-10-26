@@ -14,10 +14,10 @@ class ReferencesController < ApplicationController
 		@topic = Topic.find params[:topic_id]
 		@reference = @topic.references.new(params.require(:reference).permit(:URL))
 		
-		if @reference.save
+		if  @reference.save 
 			redirect_to topic_url(@topic)
 		else
-			render :new
+			redirect_to topic_url(@topic)
 		end
 	end
 
@@ -25,10 +25,10 @@ class ReferencesController < ApplicationController
 	end
 
 	def update
-		if @reference.update(params.require(:reference).permit(:URL))
+		if @reference.update(params.require(:reference).permit(:URL)) 
 			redirect_to topic_url(@reference.topic)
 		else
-			render :edit
+			redirect_to topic_url(@reference.topic), notice: "Please enter a vaild URL"
 		end
 	end
 
@@ -42,5 +42,6 @@ class ReferencesController < ApplicationController
 	def set_reference
 		@reference = Reference.find(params[:id])
 	end
+
 
 end

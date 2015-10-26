@@ -2,6 +2,6 @@ class Topic < ActiveRecord::Base
 
 	has_many :references, dependent: :destroy
 
-	vaildates :tile, presence: true
-	vaildates :description, presence: true
+	validates :title, presence: true
+	validates :description, presence: true
 end

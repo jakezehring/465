@@ -18,7 +18,7 @@
 	<tr>
 	<% if !cur.new_record? %>
 		<td> <a href=<%=cur.URL %>> <%= cur.URL %></td>
-		<td> <%= cur.updated_at %> </td>
+		<td> <%= cur.updated_at.strftime("%r   %e/%-m/%Y") %> </td>
 		<td> <%= link_to "Edit", edit_reference_path(cur) %> </td>
 		<td> <%= link_to "Delete", cur, method: :delete, data: {confirm: "Are you sure?" } %> </td>
 	</tr>
