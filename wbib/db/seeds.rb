@@ -8,7 +8,13 @@ topics = Topic.create(
 
 refrences = Reference.create(
   [
-     { URL: "www.puppies.net", topic_id: topics[0].id }
+     { URL: "www.puppies.net", topic_id: topics[0].id },
+     { URL: "www.toominiaussies.com", topic_id: topics[0].id },
+     { URL: "www.iheartdogs.com", topic_id: topics[0].id },
+     { URL: "www.puppiesmakemehappy.com", topic_id: topics[0].id },
+     { URL: "dogtime.com/puppies",topic_id: topics[0].id },
+     { URL: "www.cakes.com", topic_id: topics[1].id },
+     { URL: "www.chocolate.com", topic_id: topics[2].id }
 
   ]
 )
