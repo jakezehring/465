@@ -9,5 +9,23 @@ class TagsController < ApplicationController
       redirect_to image_url(@image), notice: "Tag not saved"
     end
   end
+  
+  def edit
+    @tag = Tag.find(params[:id])
+  end
 
+  def update
+    @tag = Tag.find(params[:id])
+    if @tag.update(params.require(:tag).permit(:str))
+      redirect_to image_url(@tag.image)
+    else
+      redirect_to image_url(@tag.image), notice: "Tag update failed"
+    end
+  end
+
+   def destroy
+     @tag = Tag.find(params[:id])
+     @tag.destory
+     redirect_to image_url(@tag.image)
+   end
 end

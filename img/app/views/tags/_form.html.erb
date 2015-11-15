@@ -1,8 +1,5 @@
-<!doctype html>
-<html>
-<body>
 
-  <%= form_for(@tag) do |f| %>
+  <%= form_for([@image, @tag]) do |f| %>
   <% if @tag.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this topic from being saved:</h2>
@@ -24,5 +21,3 @@
   </div>
 <% end %>
 
-</body>
-</html>

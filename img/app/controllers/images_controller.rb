@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   def index
     if current_user
       @my_images = current_user.images
-      @my_private_images = current_user.image_users.map { |cur| cur.image }
+      @shared_images = current_user.image_users.map { |cur| cur.image }
     else
       @my_images = nil
       @my_private_images = nil

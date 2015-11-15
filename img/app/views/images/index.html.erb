@@ -1,16 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Public Images</h1>
 
-<table>
-    <% @public_images.each do |image| %>
-     <% if image.user %>
-        <td> <%= link_to image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image %> </td>
-        <td> <%= image.user.name %> </td>
-     <% end %> 
-      
-    <% end %>
-<table>  
+<% if @my_images %>
+  <h1> Your Images </h1>
+  <% @my_images.each do |image| %>
+    <%= link_to  image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image %>
+  <% end %>
+<% end %>
+
+<% if @shared_images %>
+  <h1> Images that have been shared with you </h1>
+  <% @shared_images.each do |image| %>
+    <%= link_to image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image %>
+    <%= image.user.name %>
+  <% end %>
+<% end %>
+
+<h1> Public Images </h1>
+
+<% @public_images.each do |image| %>
+  <% if image.user != current_user %>
+    <%= link_to image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image %>
+    <%= image.user.name %>
+  <% end %> 
+<% end %>
 
 
 <br>

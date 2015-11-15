@@ -18,14 +18,21 @@
   <strong>Tags:</strong>
   <br>
   <% @tags.each do |tag| %>
-    <%= tag.str %>
-    <br>
+    <% if !tag.new_record? %>
+      <%= tag.str %>
+      <%= link_to "edit", edit_tag_path(tag) %>
+      <%= link_to "Delete", tag, method: :delete, data: {confirm: "Are you sure?" } %>
+      <br>
+    <% end %>
   <% end %>
 </p>
 
 <p>
   <strong>Add new tag</strong>
   <%= render "tags/form" %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
