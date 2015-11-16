@@ -32,7 +32,21 @@
   <%= render "tags/form" %>
 </p>
 
-
+  <strong> Users that have access to this image </strong> <br>
+  <% @shared.each do |user| %>
+    <% if !user.new_record? && user %>
+      <%= user.user.name %>
+      <%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure?" } %>
+      <br>
+    <% end %>
+  <% end %>
+  <br>
+  <strong> Allow access to new user </strong>
+  <%= form_for [@image, @new ] do |f| %>
+    <%= f.collection_select(:user_id, @not_shared, :id, :info) %>
+    <%= f.submit "Allow access"%>
+  <% end %>
+    
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>

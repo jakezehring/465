@@ -19,6 +19,10 @@ class ImagesController < ApplicationController
   def show
     @tag = @image.tags.new
     @tags = @image.tags
+    @shared = @image.image_users
+    @users = @shared.map { |cur| cur.user }
+    @new = @image.image_users.new
+    @not_shared = User.all.map { |cur| cur if !@users.include? cur }.compact!
   end
 
   # GET /images/new
@@ -81,4 +85,5 @@ class ImagesController < ApplicationController
     def image_params
       params.require(:image).permit(:filename, :private)
     end
+    
 end
