@@ -25,7 +25,7 @@ class TagsController < ApplicationController
 
    def destroy
      @tag = Tag.find(params[:id])
-     @tag.destory
+     @tag.destroy
      redirect_to image_url(@tag.image)
    end
 end

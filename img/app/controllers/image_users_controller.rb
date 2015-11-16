@@ -12,7 +12,7 @@ class ImageUsersController < ApplicationController
   
    def destroy
      @imageuser = ImageUser.find(params[:id])
-     @imageuser.destory
+     @imageuser.destroy
      redirect_to image_url(@imageuser.image)
    end
 end
