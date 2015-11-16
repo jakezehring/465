@@ -26,7 +26,7 @@ users = User.create(
     { email: 'i@i.com', name: "Mr. Iguana", password: "i", password_confirmation: "i"},
     { email: 'j@j.com', name: "Mr. Jackrabbit", password: "j", password_confirmation: "j"},
     { email: 'k@k.com', name: "Mr. Kangaroo", password: "k", password_confirmation: "k"},
-    { email: 'l@l.com', name: "Mr. Lama", password: "l", password_confirmation: "l"},
+    { email: 'l@l.com', name: "Mr. Llama", password: "l", password_confirmation: "l"},
     { email: 'm@m.com', name: "Mr. Mouse", password: "m", password_confirmation: "m"},
     { email: 'n@n.com', name: "Mr. Numbat", password: "n", password_confirmation: "n"},
     { email: 'o@o.com', name: "Mr. Opossum", password: "o", password_confirmation: "o"},
@@ -251,9 +251,7 @@ images = Image.create(
     { filename: "203.jpg", private: "f", user_id: 9 },
     { filename: "204.jpg", private: "f", user_id: 21 },
     { filename: "205.jpg", private: "f", user_id: 20 },
-    { filename: "206.jpg", private: "t", user_id: 8 },
-    { filename: "207.jpg", private: "f", user_id: 18 },
-    { filename: "208.jpg", private: "f", user_id: 9 },
+    { filename: "206.jpg", private: "t", user_id: 8 }
   ]
 )
 
@@ -266,8 +264,8 @@ images.each do |image|
     for i in 0..size
       while (user_indexes[i] = (rand 25) + 1) == image.user_id
       end
-      user_indexes.uniq!
     end
+    user_indexes.uniq!
     user_indexes.each do |user_id|
       ImageUser.create(user_id: user_id, image_id: image.id)
     end
@@ -275,8 +273,7 @@ images.each do |image|
   
   # create tags
   for i in 0..rand(4)
-    tag_string = gen_tag
-    #puts "Tag.create(" + image.id.to_s + ", " + tag_string + ")"
-    Tag.create(image_id: image.id, str: tag_string)
+    random_tag_string = gen_tag
+    Tag.create(image_id: image.id, str: random_tag_string)
   end
 end

@@ -23,6 +23,9 @@ class ImagesController < ApplicationController
     @users = @shared.map { |cur| cur.user }
     @new = @image.image_users.new
     @not_shared = User.all.map { |cur| cur if !@users.include? cur }.compact!
+    if !@not_shared
+      @not_shared = User.all
+    end
   end
 
   # GET /images/new
@@ -38,7 +41,14 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
+    @image.generate_filename
     @image.user = current_user
+    
+    @uploaded_io = params[:image][:uploaded_file]
+
+    File.open(Rails.root.join('public', 'images', @image.filename), 'wb') do |file|
+        file.write(@uploaded_io.read)
+    end
 
     respond_to do |format|
       if @image.save
@@ -55,7 +65,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1.json
   def update
     respond_to do |format|
-      if @image.update(image_params)
+      if @image.update(params.require(:image).permit(:private))
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
         format.json { render :show, status: :ok, location: @image }
       else
