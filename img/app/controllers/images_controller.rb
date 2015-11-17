@@ -23,7 +23,6 @@ class ImagesController < ApplicationController
     @users = @shared.map { |cur| cur.user }
     @new = @image.image_users.new
     @not_shared = User.all.map { |cur| cur if !@users.include? cur }.compact!
-    @not_shared.delete(@image.user)
     if !@not_shared
       @not_shared = User.all
     end
