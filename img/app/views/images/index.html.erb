@@ -10,8 +10,10 @@
 <% if @shared_images %>
   <h1> Images that have been shared with you </h1>
   <% @shared_images.each do |image| %>
+    <div class="item">
     <%= link_to image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image %>
-    <%= image.user.name %>
+    <span class="caption"><%= image.user.name %></span>
+    </div>
   <% end %>
 <% end %>
 
@@ -19,8 +21,10 @@
 
 <% @public_images.each do |image| %>
   <% if image.user != current_user %>
+    <div class ="item">
     <%= link_to image_tag(root_url + "/images/" + image.filename, size: "100x100", alt: image.filename), image %>
-    <%= image.user.name %>
+    <span class="caption"><%= image.user.name %> </span>
+    </div>
   <% end %> 
 <% end %>
 
