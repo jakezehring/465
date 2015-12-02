@@ -1,10 +1,10 @@
 class CreateResorts < ActiveRecord::Migration
   def change
     create_table :resorts do |t|
-      t.name :string
-      t.start :date
-      t.end :date
-      t.people :int
+      t.string :name
+      t.date :start
+      t.date :end
+      t.integer :people
 
       t.timestamps null: false
     end
