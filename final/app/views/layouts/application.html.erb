@@ -5,17 +5,26 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div id="user_nav">
+  <ul>
+    <li><a href="">Home</a></li>
+    <li><a href="#hunts">Guided Hunts</a></li>
+    <li><a href="#resort">Summer Resort</a></li>
+    <li><a href="#user">My Reservations</a></li>
     <% if user_signed_in? %>
-      Signed in as <%= current_user.email %>. Not you?
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <ul style="float:right;list-style-type:none;">
+      <li> Signed in as <%= current_user.name %> </li>
+      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      </ul>
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> or
-      <%= link_to "Sign in", new_user_session_path %>
+      <ul style="float:right;list-style-type:none;"> 
+      <li><%= link_to "Sign up", new_user_registration_path %> </li>
+      <li><%= link_to "Sign in", new_user_session_path %> </li>
+      </ul>
     <% end %>
-  </div>
+
+  </ul>
+  <br>
+  <p class="notice"><%= notice %></p>
 </head>
 <body>
 
