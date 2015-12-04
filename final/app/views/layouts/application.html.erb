@@ -5,24 +5,50 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <ul>
-    <li><a href="">Home</a></li>
-    <li><a href="#hunts">Guided Hunts</a></li>
-    <li><a href="#resort">Summer Resort</a></li>
-    <li><a href="#user">My Reservations</a></li>
-    <% if user_signed_in? %>
-      <ul style="float:right;list-style-type:none;">
-      <li> Signed in as <%= current_user.name %> </li>
-      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-      </ul>
-    <% else %>
-      <ul style="float:right;list-style-type:none;"> 
-      <li><%= link_to "Sign up", new_user_registration_path %> </li>
-      <li><%= link_to "Sign in", new_user_session_path %> </li>
-      </ul>
-    <% end %>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/">Guided Hunts<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Requierments</a></li>
+            <li><a href="#">Open Reservations</a></li>
+          </ul>
+        </li>
 
-  </ul>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/">Summer Resort<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Requierments</a></li>
+            <li><a href="#">Open Reservations</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="contact">Contact Us</a></li>
+        <% if user_signed_in? %>
+          <li><a href="user/reservations">My Reservations</a></li>
+        <% end %>
+        <% if user_signed_in? && current_user.admin %>
+          <li><a href="admin">Admin</a></li>
+        <% end %>
+      </ul>
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav navbar-right">
+            <li><p class="nav navbar-text">Logged in as: <%= current_user.name %></p></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        <% else %>
+          <ul class="nav navbar-nav navbar-right"> 
+            <li><%= link_to "Sign up", new_user_registration_path %> </li>
+            <li><%= link_to "login", new_user_session_path %> </li>
+          </ul>
+        <% end %>
+    </div>
+  </div>
+</nav>
   <br>
   <p class="notice"><%= notice %></p>
 </head>
