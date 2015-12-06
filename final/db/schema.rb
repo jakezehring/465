@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20151126204753) do
 
   create_table "hunts", force: :cascade do |t|
-    t.string   "name"
+    t.integer  "user_id"
     t.date     "start"
     t.integer  "people"
     t.boolean  "pheasent"
@@ -23,14 +23,18 @@ ActiveRecord::Schema.define(version: 20151126204753) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "hunts", ["user_id"], name: "index_hunts_on_user_id"
+
   create_table "resorts", force: :cascade do |t|
-    t.string   "name"
+    t.integer  "user_id"
     t.date     "start"
     t.date     "end"
     t.integer  "people"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "resorts", ["user_id"], name: "index_resorts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

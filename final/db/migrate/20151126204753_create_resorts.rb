@@ -1,7 +1,7 @@
 class CreateResorts < ActiveRecord::Migration
   def change
     create_table :resorts do |t|
-      t.string :name
+      t.references :user, index:true, foreign_key: true
       t.date :start
       t.date :end
       t.integer :people

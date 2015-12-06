@@ -1,7 +1,7 @@
 class CreateHunts < ActiveRecord::Migration
   def change
     create_table :hunts do |t|
-      t.string :name
+      t.references :user, index: true, foreign_key: true
       t.date :start
       t.integer :people
       t.boolean :pheasent

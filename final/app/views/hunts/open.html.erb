@@ -1,0 +1,17 @@
+<h1> All Open Reservations </h1>
+
+<% if @open == nil %>
+  <h2> No reservations remaning! </h2>
+<% else %>
+  <% @open.each do |cur| %>
+    <strong><%= cur.start.strftime("%B %d, %Y") %> </strong>
+    <br>
+  <% end %>
+<% end %>
+
+<% if current_user && current_user.admin == true  && @closed != nil%>
+  <h2> Closed Reservations </h2>
+  <% @closed.each do |cur| %>
+    <%= cur.date  cur.user.name %>
+  <% end %>
+<% end %>

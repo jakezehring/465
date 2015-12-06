@@ -1,0 +1,15 @@
+<h1> Open Reservations </h1>
+
+<% if @open == nil %>
+  <h2> All reservations taken! </h2>
+<% else %>
+  <% @open.each do |cur| %>
+    <%= cur.date %>
+  <% end %>
+<% end %>
+
+<% if current_user.admin == true && @closed != nil %>
+  <% @closed.each do |cur| %>
+    <%= cur.date cur.user.name %>
+  <% end %>
+<% end %>

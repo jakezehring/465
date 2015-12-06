@@ -1,0 +1,15 @@
+<% if @hunts == nil && @resorts == nil %>
+  <h1> No reservations scheduled </h1>
+<% end %>
+
+<% if @hunts != nil %>
+  <% @hunts.each do |cur| %>
+    <%= cur.date %>
+  <% end %>
+<% end %>
+
+<% if @resorts != nil %>
+  <% @resorts.each do |cur| %>
+    <%= cur.date %>
+  <% end %>
+<% end %>
