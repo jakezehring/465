@@ -4,12 +4,15 @@
   <h2> All reservations taken! </h2>
 <% else %>
   <% @open.each do |cur| %>
-    <%= cur.date %>
+    <strong><%= cur.start.strftime("B %d, %Y") %> </strong>
+    <br>
   <% end %>
 <% end %>
 
-<% if current_user.admin == true && @closed != nil %>
+<% if current_user && current_user.admin == true && @closed != nil %>
   <% @closed.each do |cur| %>
-    <%= cur.date cur.user.name %>
+    <strong> <%= cur.start.strftime("B %d, %Y") %>
+    <%= cur.user.name %> </strong>
+    <br>
   <% end %>
 <% end %>

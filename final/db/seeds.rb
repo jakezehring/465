@@ -21,3 +21,9 @@ hunts = Hunt.create(
     { start: DateTime.parse("28/1/2017") },
   ]
 )
+
+resorts = Resort.create(
+  [
+    { start: DateTime.parse("6/1/2016") },
+  ]
+)

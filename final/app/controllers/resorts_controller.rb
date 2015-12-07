@@ -9,7 +9,7 @@ class ResortsController < ApplicationController
   end
 
   def open
-    @open = Resort.all.map { |cur| cur if cur.user == nil }.compact!
-    @closed = Resort.all.map { |cur| cur if cur.user != nil }.compact!
+    @open = Resort.all.map { |cur| cur if cur.user == nil }
+    @closed = Resort.all.map { |cur| cur if cur.user != nil }
   end
 end

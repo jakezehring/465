@@ -12,6 +12,8 @@
 <% if current_user && current_user.admin == true  && @closed != nil%>
   <h2> Closed Reservations </h2>
   <% @closed.each do |cur| %>
-    <%= cur.date  cur.user.name %>
+    <strong> <%= cur.date.strftime("B %d, %Y") %>
+    <%=  cur.user.name %> </strong>
+    <br>
   <% end %>
 <% end %>
