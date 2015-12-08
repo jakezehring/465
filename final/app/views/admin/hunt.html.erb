@@ -1,0 +1,19 @@
+<h1> Hunt admin </h1>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<p> Add new reservation time </p>
+
+<%= form_for(@hunt) do |f| %>
+  <div class="field">
+  <%= f.text_field :start, id: :datepicker, :placeholder => 'Date' %>
+  <%= f.submit %>
+<% end %>
+<p> Confirm a reservation </p>
+
+<p> Delete a reservation </p>
+
+<%= form_for :hunt, method: :delete do |f| %>
+  <%= f.collection_select(:id, @list, :id, :info) %>
+  <%= f.submit "Delete" %>
+<% end %>

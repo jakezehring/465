@@ -20,19 +20,25 @@
 
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/">Summer Resort<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="resort">Info</a></li>
-            <li><a href="resorta">Activities</a></li>
-            <li><a href="resortr">Requierments</a></li>
-            <li><a href="resorto">Open Reservations</a></li>
+            <li><a href="/resort">Info</a></li>
+            <li><a href="/resorta">Activities</a></li>
+            <li><a href="/resortr">Requierments</a></li>
+            <li><a href="/resorto">Open Reservations</a></li>
           </ul>
         </li>
         
         <li><a href="contact">Contact Us</a></li>
         <% if user_signed_in? %>
-          <li><a href="user/reservations">My Reservations</a></li>
+          <li><a href="/user/reservations">My Reservations</a></li>
         <% end %>
         <% if user_signed_in? && current_user.admin %>
-          <li><a href="admin">Admin</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="/">Admin<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/admin/hunt">Hunts</a></li>
+            <li><a href="/admin/resort">Resorts</a></li>
+          </ul>
+        </li>
+
         <% end %>
       </ul>
         <% if user_signed_in? %>
