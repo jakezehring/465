@@ -20,8 +20,10 @@ class HuntsController < ApplicationController
   end
 
   def destroy
-    @hunt = Hunt.new(params.require(:hunt).permit(:id))
-    @hunt.destroy
+    @hunt = params.require(:hunt).permit(:id)
+    @hunt = @hunt[:id]
+    @shit = Hunt.find @hunt
+    @shit.destroy
     redirect_to "/admin/hunt", notice: "Hunt deleted"
   end
 end

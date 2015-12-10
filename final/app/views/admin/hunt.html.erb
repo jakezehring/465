@@ -11,6 +11,11 @@
 <% end %>
 <p> Confirm a reservation </p>
 
+<%= form_for :hunt, method: :patch do |f| %>
+  <%= f.collection_select(:id, @list, :id, :info) %>
+  <%= f.text_field :people %>
+  <%= f.
+
 <p> Delete a reservation </p>
 
 <%= form_for :hunt, method: :delete do |f| %>
