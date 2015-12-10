@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   delete '/admin/hunt', to: "hunts#destroy"
+  patch '/admin/hunt', to: "hunts#update"
 
   get 'resort', to: "resorts#info"
   get 'resorta', to: "resorts#activities"

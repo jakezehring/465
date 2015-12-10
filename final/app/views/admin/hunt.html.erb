@@ -2,21 +2,32 @@
 
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-<p> Add new reservation time </p>
+<h4> Add new reservation time </h4>
 
 <%= form_for(@hunt) do |f| %>
   <div class="field">
   <%= f.text_field :start, id: :datepicker, :placeholder => 'Date' %>
   <%= f.submit %>
 <% end %>
-<p> Confirm a reservation </p>
-
+<br> <br> <br>
+<h4> Confirm a reservation </h4>
+<br>
 <%= form_for :hunt, method: :patch do |f| %>
-  <%= f.collection_select(:id, @list, :id, :info) %>
-  <%= f.text_field :people %>
-  <%= f.
-
-<p> Delete a reservation </p>
+  <%= f.collection_select(:id, @list, :id, :info) %><span> <strong> select a date</span> <br> <br>
+  <%= f.collection_select(:user_id, @users, :id, :name) %><span> select a user</span> <br> <br>
+  <%= f.number_field :people, :min => 4, :max => 12 %><span> # of people </strong> </span> <br> <br>
+  <%= f.label :pheasent, :class => "check_box" do %>
+    <%= f.check_box :pheasent %> pheasent
+  <% end %>
+  <%= f.label :dove, :class => "check_box" do %>
+    <%= f.check_box :dove %> dove
+  <% end %>
+  <br> <br>
+  <%= f.submit "Confirm Reservation" %>
+<% end %>
+ 
+<br> <br>
+<h4> Delete a reservation </h4>
 
 <%= form_for :hunt, method: :delete do |f| %>
   <%= f.collection_select(:id, @list, :id, :info) %>

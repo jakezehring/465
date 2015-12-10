@@ -18,6 +18,28 @@ class HuntsController < ApplicationController
       redirect_to "/admin/hunt", notice: "Hunt not created"
     end
   end
+  
+  def update
+    @data = params.require(:hunt).permit(:id, :user_id, :people, :pheasent, :dove)
+    @hunt = Hunt.find @data[:id]
+    if @data[:pheasent] == 1
+      @data[:pheasent] = true
+    else
+      @data[:pheasent] = false
+    end
+    if @data[:dove] == 1
+      @data[:dove] = true
+    else
+      @data[:dove] = false
+    end
+
+    if @hunt.update(@data)
+      redirect_to "/admin/hunt", notice: "Reservation reserved"
+    else
+      redirect_to "/admin/hunt", notice: "Hunt failed to update"
+    end
+  end
+    
 
   def destroy
     @hunt = params.require(:hunt).permit(:id)
