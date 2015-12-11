@@ -15,9 +15,10 @@
   <h2> Closed Reservations </h2>
   <% @closed.each do |cur| %>
     <% if cur %>
-      <strong> <%= cur.start.strftime("%B %d, %Y") %>
-      <%=  cur.user.name %> </strong>
-      <br>
+      <strong> <%= cur.start.strftime("%B %d, %Y") %> <br>
+      user: <%=  cur.user.name %> </strong> <br>
+      people: <%= cur.people %><br>
+      options: <%= @options %>
     <% end %>
   <% end %>
 <% end %>

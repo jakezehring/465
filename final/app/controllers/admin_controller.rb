@@ -7,6 +7,9 @@ class AdminController < ApplicationController
   end
 
   def resort
+    @users = User.all
+    @resort = Resort.new
+    @list = Resort.all
   end
 
 end

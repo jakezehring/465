@@ -1,5 +1,3 @@
 
 
-$(function() {
-  $( "#datepicker" ).datepicker();
-});
+$(function(){$('.dateTxt').datepicker(); }); 

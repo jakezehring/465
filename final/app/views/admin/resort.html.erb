@@ -1,1 +1,41 @@
 <h1> Resort admin </h1>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<h4> Add new resort time </h4>
+
+<%= form_for(@resort) do |f| %>
+  <div class="field">
+  <%= f.text_field :start, id: :one, class: :dateTxt %>
+  <%= f.submit %> 
+  </div>
+<% end %>
+
+<br> <br>
+
+<h4> Confirm a reservation </h4>
+<br>
+
+<%= form_for :resort, method: :patch do |f| %> 
+  <%= f.collection_select(:id, @list, :id, :info) %> <span> <strong> select a date </span> <br> <br>
+  <%= f.collection_select(:user_id, @users, :id, :name) %> <span> select a user </span> <br> <br>
+  <%= f.text_field :end, id: :two, class: :dateTxt %> <span> pick an end date </span> <br> <br>
+  <%= f.number_field :people, :min => 4, :max => 12 %><span> # of people </strong> </span> <br> <br>
+  <%= f.submit "Confirm Reservation" %>
+<% end %>
+
+<br> <br>
+
+<h4> Delete a reservation </h4>
+
+<%= form_for :resort, method: :delete do |f| %>
+  <%= f.collection_select(:id, @list, :id, :info) %>
+  <%= f.submit "Delete" %>
+<% end %>
+
+
+
+
+
+

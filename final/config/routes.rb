@@ -17,6 +17,12 @@ Rails.application.routes.draw do
   get 'resortr', to: "resorts#requierments"
   get 'resorto', to: "resorts#open"
 
+  resources :resorts do
+  end
+
+  delete '/admin/resort', to: "resorts#destory"
+  patch '/admin/resort', to: "resorts#update"
+
   get 'user/reservations', to: "user#index"
   get 'contact', to: "contact#index"
 
