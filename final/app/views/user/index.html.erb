@@ -3,7 +3,7 @@
 <% end %>
 
 <% if @hunts != [] %>
-  <h2> Gudied hunts reservations </h2>
+  <h2> Guided hunts reservations </h2>
   <% @hunts.each do |cur| %>
     <strong> <%= cur.start.strftime("%B %d, %Y") %> </strong>
   <% end %>
