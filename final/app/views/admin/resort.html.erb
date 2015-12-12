@@ -21,7 +21,7 @@
   <%= f.collection_select(:id, @list, :id, :info) %> <span> <strong> select a date </span> <br> <br>
   <%= f.collection_select(:user_id, @users, :id, :name) %> <span> select a user </span> <br> <br>
   <%= f.text_field :end, id: :two, class: :dateTxt %> <span> pick an end date </span> <br> <br>
-  <%= f.number_field :people, :min => 4, :max => 12 %><span> # of people </strong> </span> <br> <br>
+  <%= f.number_field :people, :min => 4, :max => 8 %><span> # of people </strong> </span> <br> <br>
   <%= f.submit "Confirm Reservation" %>
 <% end %>
 

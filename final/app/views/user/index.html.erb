@@ -1,15 +1,17 @@
-<% if @hunts == nil && @resorts == nil %>
+<% if @hunts == [] && @resorts == [] %>
   <h1> No reservations scheduled </h1>
 <% end %>
 
-<% if @hunts != nil %>
+<% if @hunts != [] %>
+  <h2> Gudied hunts reservations </h2>
   <% @hunts.each do |cur| %>
-    <%= cur.date %>
+    <strong> <%= cur.start.strftime("%B %d, %Y") %> </strong>
   <% end %>
 <% end %>
 
-<% if @resorts != nil %>
+<% if @resorts != [] %>
+ <h2> Summer resort reservations </h2>
   <% @resorts.each do |cur| %>
-    <%= cur.date %>
+    <strong> <%= cur.start.strftime("%B %d, %Y") %> </strong>
   <% end %>
 <% end %>

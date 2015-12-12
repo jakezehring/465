@@ -1,4 +1,4 @@
-<h1> All Open Reservations </h1>
+<h2> All Open Reservations </h2>
 
 <% if @open == nil %>
   <h2> No reservations remaning! </h2>
@@ -16,9 +16,10 @@
   <% @closed.each do |cur| %>
     <% if cur %>
       <strong> <%= cur.start.strftime("%B %d, %Y") %> <br>
-      user: <%=  cur.user.name %> </strong> <br>
+      user: <%=  cur.user.name %>  <br>
       people: <%= cur.people %><br>
-      options: <%= @options %>
+      pheasent: <%= cur.pheasent  %> <br>
+      dove: <%= cur.dove %> <br> <br> </strong>
     <% end %>
   <% end %>
 <% end %>

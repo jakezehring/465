@@ -4,8 +4,8 @@ class CreateHunts < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.date :start
       t.integer :people
-      t.boolean :pheasent
-      t.boolean :dove
+      t.boolean :pheasent, default: false
+      t.boolean :dove, default: false
 
       t.timestamps null: false
     end

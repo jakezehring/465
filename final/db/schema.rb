@@ -17,10 +17,10 @@ ActiveRecord::Schema.define(version: 20151126204753) do
     t.integer  "user_id"
     t.date     "start"
     t.integer  "people"
-    t.boolean  "pheasent"
-    t.boolean  "dove"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "pheasent",   default: false
+    t.boolean  "dove",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "hunts", ["user_id"], name: "index_hunts_on_user_id"

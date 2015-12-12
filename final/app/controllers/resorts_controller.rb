@@ -36,7 +36,7 @@ class ResortsController < ApplicationController
   def destory
     @data = params.require(:resort).permit(:id)
     @resort = Resort.find @data[:id]
-    @reosrt.destory
+    @resort.destroy
     redirect_to "/admin/resort", notice: "Resort deleted"
   end
 end
